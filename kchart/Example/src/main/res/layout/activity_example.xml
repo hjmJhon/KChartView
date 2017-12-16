@@ -1,30 +1,31 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:orientation="vertical">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/title_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        android:background="@color/chart_background">
+        android:background="@color/chart_background"
+        android:fitsSystemWindows="true">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:minHeight="40dp"
             android:text="@string/app_name"
-            android:gravity="center"
             android:textColor="@color/chart_white"
-            android:textSize="16sp" />
+            android:textSize="16sp"/>
     </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="#494949" />
+        android:background="#494949"/>
 
     <LinearLayout
         android:id="@+id/ll_status"
@@ -49,7 +50,7 @@
                 android:layout_centerHorizontal="true"
                 android:text="1233.51"
                 android:textColor="@color/chart_green"
-                android:textSize="24sp" />
+                android:textSize="24sp"/>
 
             <TextView
                 android:id="@+id/tv_percent"
@@ -60,7 +61,7 @@
                 android:layout_marginTop="3dp"
                 android:text="0.51  +0.04%"
                 android:textColor="@color/chart_green"
-                android:textSize="12sp" />
+                android:textSize="12sp"/>
         </RelativeLayout>
 
         <LinearLayout
@@ -75,15 +76,15 @@
                 android:layout_height="wrap_content"
                 android:text="最高 xxx"
                 android:textColor="@color/chart_white"
-                android:textSize="12sp" />
+                android:textSize="12sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
                 android:text="最低 xxx"
                 android:textColor="@color/chart_white"
-                android:textSize="12sp"
-                android:layout_marginTop="13dp" />
+                android:textSize="12sp"/>
 
         </LinearLayout>
 
@@ -99,15 +100,15 @@
                 android:layout_height="wrap_content"
                 android:text="昨收 xxx"
                 android:textColor="@color/chart_white"
-                android:textSize="12sp" />
+                android:textSize="12sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
                 android:text="开盘 xxx"
                 android:textColor="@color/chart_white"
-                android:textSize="12sp"
-                android:layout_marginTop="13dp" />
+                android:textSize="12sp"/>
 
         </LinearLayout>
     </LinearLayout>
@@ -115,7 +116,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="#494949" />
+        android:background="#494949"/>
 
     <com.github.tifezh.kchartlib.chart.KChartView
         android:id="@+id/kchart_view"

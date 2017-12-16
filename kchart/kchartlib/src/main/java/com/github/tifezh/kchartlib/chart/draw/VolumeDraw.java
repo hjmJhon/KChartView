@@ -38,8 +38,8 @@ public class VolumeDraw implements IChartDraw<VolumeImpl> {
             @NonNull Canvas canvas, @NonNull BaseKChartView view, int position) {
 
         drawHistogram(canvas, curPoint, lastPoint, curX, view, position);
-        view.drawChildLine(canvas, ma5Paint, lastX, lastPoint.getMA5Volume(), curX, curPoint.getMA5Volume());
-        view.drawChildLine(canvas, ma10Paint, lastX, lastPoint.getMA10Volume(), curX, curPoint.getMA10Volume());
+        view.drawChildLine(canvas, ma5Paint, lastX, lastPoint.getMa5Volume(), curX, curPoint.getMa5Volume());
+        view.drawChildLine(canvas, ma10Paint, lastX, lastPoint.getMa10Volume(), curX, curPoint.getMa10Volume());
     }
 
     private void drawHistogram(
@@ -62,21 +62,21 @@ public class VolumeDraw implements IChartDraw<VolumeImpl> {
             @NonNull Canvas canvas, @NonNull BaseKChartView view, int position, float x, float y) {
 
         VolumeImpl point = (VolumeImpl) view.getItem(position);
-        String text = "MA5:" + view.formatValue(point.getMA5Volume()) + " ";
+        String text = "MA5:" + view.formatValue(point.getMa5Volume()) + " ";
         canvas.drawText(text, x, y, ma5Paint);
         x += ma5Paint.measureText(text);
-        text = "MA10:" + view.formatValue(point.getMA10Volume()) + " ";
+        text = "MA10:" + view.formatValue(point.getMa10Volume()) + " ";
         canvas.drawText(text, x, y, ma10Paint);
     }
 
     @Override
     public float getMaxValue(VolumeImpl point) {
-        return Math.max(point.getVolume(),Math.max(point.getMA5Volume(),point.getMA10Volume()));
+        return Math.max(point.getVolume(),Math.max(point.getMa5Volume(),point.getMa10Volume()));
     }
 
     @Override
     public float getMinValue(VolumeImpl point) {
-        return Math.min(point.getVolume(),Math.min(point.getMA5Volume(),point.getMA10Volume()));
+        return Math.min(point.getVolume(),Math.min(point.getMa5Volume(),point.getMa10Volume()));
     }
 
     /**

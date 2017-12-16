@@ -157,13 +157,13 @@ public class DataHelper {
                 float md = 0;
                 for (int j = i - n + 1; j <= i; j++) {
                     float c = datas.get(j).getClosePrice();
-                    float m = point.getMA20Price();
+                    float m = point.getMa20Price();
                     float value = c - m;
                     md += value * value;
                 }
                 md = md / (n - 1);
                 md = (float) Math.sqrt(md);
-                point.mb = point.getMA20Price();
+                point.mb = point.getMa20Price();
                 point.up = point.mb + 2f * md;
                 point.dn = point.mb - 2f * md;
             }
@@ -181,30 +181,50 @@ public class DataHelper {
         float ma10 = 0;
         float ma20 = 0;
 
+        float volumeMa5 = 0;
+        float volumeMa10 = 0;
+
         for (int i = 0; i < datas.size(); i++) {
             KLineEntity point = datas.get(i);
             final float closePrice = point.getClosePrice();
+            final float volume = point.getVolume();
 
             ma5 += closePrice;
             ma10 += closePrice;
             ma20 += closePrice;
+
+            volumeMa5 += volume;
+            volumeMa10 += volume;
+
             if (i >= 5) {
                 ma5 -= datas.get(i - 5).getClosePrice();
-                point.MA5Price = ma5 / 5f;
+                point.ma5Price = ma5 / 5f;
+
+                volumeMa5 -= datas.get(i - 5).getVolume();
+                point.ma5Volume = (volumeMa5 / 5f);
             } else {
-                point.MA5Price = ma5 / (i + 1f);
+                point.ma5Price = ma5 / (i + 1f);
+
+                point.ma5Volume = (volumeMa5 / (i + 1f));
             }
+
             if (i >= 10) {
                 ma10 -= datas.get(i - 10).getClosePrice();
-                point.MA10Price = ma10 / 10f;
+                point.ma10Price = ma10 / 10f;
+
+                volumeMa10 -= datas.get(i - 10).getVolume();
+                point.ma10Volume = (volumeMa10 / 10f);
             } else {
-                point.MA10Price = ma10 / (i + 1f);
+                point.ma10Price = ma10 / (i + 1f);
+
+                point.ma10Volume = (volumeMa10 / (i + 1f));
             }
+
             if (i >= 20) {
                 ma20 -= datas.get(i - 20).getClosePrice();
-                point.MA20Price = ma20 / 20f;
+                point.ma20Price = ma20 / 20f;
             } else {
-                point.MA20Price = ma20 / (i + 1f);
+                point.ma20Price = ma20 / (i + 1f);
             }
         }
     }
@@ -220,33 +240,33 @@ public class DataHelper {
         calculateBOLL(datas);
         calculateRSI(datas);
         calculateKDJ(datas);
-        calculateVolumeMA(datas);
+//        calculateVolumeMA(datas);
     }
 
-    private static void calculateVolumeMA(List<KLineEntity> entries) {
+    private static void calculateVolumeMA(List<KLineEntity> datas) {
         float volumeMa5 = 0;
         float volumeMa10 = 0;
 
-        for (int i = 0; i < entries.size(); i++) {
-            KLineEntity entry = entries.get(i);
+        for (int i = 0; i < datas.size(); i++) {
+            KLineEntity point = datas.get(i);
 
-            volumeMa5 += entry.getVolume();
-            volumeMa10 += entry.getVolume();
+            volumeMa5 += point.getVolume();
+            volumeMa10 += point.getVolume();
 
             if (i >= 5) {
 
-                volumeMa5 -= entries.get(i - 5).getVolume();
-                entry.MA5Volume = (volumeMa5 / 5f);
+                volumeMa5 -= datas.get(i - 5).getVolume();
+                point.ma5Volume = (volumeMa5 / 5f);
             } else {
 
-                entry.MA5Volume = (volumeMa5 / (i + 1f));
+                point.ma5Volume = (volumeMa5 / (i + 1f));
             }
 
             if (i >= 10) {
-                volumeMa10 -= entries.get(i - 10).getVolume();
-                entry.MA10Volume = (volumeMa10 / 5f);
+                volumeMa10 -= datas.get(i - 10).getVolume();
+                point.ma10Volume = (volumeMa10 / 10f);
             } else {
-                entry.MA10Volume = (volumeMa10 / (i + 1f));
+                point.ma10Volume = (volumeMa10 / (i + 1f));
             }
         }
     }

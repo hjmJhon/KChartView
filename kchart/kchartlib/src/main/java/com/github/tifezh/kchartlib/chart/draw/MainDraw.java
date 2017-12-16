@@ -50,29 +50,29 @@ public class MainDraw implements IChartDraw<CandleImpl>{
     public void drawTranslated(@Nullable CandleImpl lastPoint, @NonNull CandleImpl curPoint, float lastX, float curX, @NonNull Canvas canvas, @NonNull BaseKChartView view, int position) {
         drawCandle(view, canvas, curX, curPoint.getHighPrice(), curPoint.getLowPrice(), curPoint.getOpenPrice(), curPoint.getClosePrice());
         //画ma5
-        if (lastPoint.getMA5Price() != 0) {
-            view.drawMainLine(canvas, ma5Paint, lastX, lastPoint.getMA5Price(), curX, curPoint.getMA5Price());
+        if (lastPoint.getMa5Price() != 0) {
+            view.drawMainLine(canvas, ma5Paint, lastX, lastPoint.getMa5Price(), curX, curPoint.getMa5Price());
         }
         //画ma10
-        if (lastPoint.getMA10Price() != 0) {
-            view.drawMainLine(canvas, ma10Paint, lastX, lastPoint.getMA10Price(), curX, curPoint.getMA10Price());
+        if (lastPoint.getMa10Price() != 0) {
+            view.drawMainLine(canvas, ma10Paint, lastX, lastPoint.getMa10Price(), curX, curPoint.getMa10Price());
         }
         //画ma20
-        if (lastPoint.getMA20Price() != 0) {
-            view.drawMainLine(canvas, ma20Paint, lastX, lastPoint.getMA20Price(), curX, curPoint.getMA20Price());
+        if (lastPoint.getMa20Price() != 0) {
+            view.drawMainLine(canvas, ma20Paint, lastX, lastPoint.getMa20Price(), curX, curPoint.getMa20Price());
         }
     }
 
     @Override
     public void drawText(@NonNull Canvas canvas, @NonNull BaseKChartView view, int position, float x, float y) {
         CandleImpl point = (KLineImpl) view.getItem(position);
-        String text = "MA5:" + view.formatValue(point.getMA5Price()) + " ";
+        String text = "MA5:" + view.formatValue(point.getMa5Price()) + " ";
         canvas.drawText(text, x, y, ma5Paint);
         x += ma5Paint.measureText(text);
-        text = "MA10:" + view.formatValue(point.getMA10Price()) + " ";
+        text = "MA10:" + view.formatValue(point.getMa10Price()) + " ";
         canvas.drawText(text, x, y, ma10Paint);
         x += ma10Paint.measureText(text);
-        text = "MA20:" + view.formatValue(point.getMA20Price()) + " ";
+        text = "MA20:" + view.formatValue(point.getMa20Price()) + " ";
         canvas.drawText(text, x, y, ma20Paint);
         if (view.isLongPress()) {
             drawSelector(view, canvas);
@@ -81,12 +81,12 @@ public class MainDraw implements IChartDraw<CandleImpl>{
 
     @Override
     public float getMaxValue(CandleImpl point) {
-        return Math.max(point.getHighPrice(), point.getMA20Price());
+        return Math.max(point.getHighPrice(), point.getMa20Price());
     }
 
     @Override
     public float getMinValue(CandleImpl point) {
-        return Math.min(point.getMA20Price(), point.getLowPrice());
+        return Math.min(point.getMa20Price(), point.getLowPrice());
     }
 
     /**

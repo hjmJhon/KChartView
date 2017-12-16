@@ -12,7 +12,7 @@ public interface VolumeImpl {
 
     float getVolume();
 
-    float getMA5Volume();
+    float getMa5Volume();
 
-    float getMA10Volume();
+    float getMa10Volume();
 }

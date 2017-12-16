@@ -181,8 +181,11 @@ public class KChartView extends BaseKChartView {
         {
             mProgressBar.setVisibility(View.GONE);
         }
-        super.setScrollEnable(mLastScrollEnable);
-        super.setScaleEnable(mLastScaleEnable);
+        // fix bugs
+//        super.setScrollEnable(mLastScrollEnable);
+//        super.setScaleEnable(mLastScaleEnable);
+        super.setScrollEnable(true);
+        super.setScaleEnable(true);
     }
 
     /**

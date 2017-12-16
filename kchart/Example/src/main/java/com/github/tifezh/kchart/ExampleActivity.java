@@ -35,18 +35,17 @@ public class ExampleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        int type=getIntent().getIntExtra("type",0);
-        if(type==0)
-        {
+        int type = getIntent().getIntExtra("type", 0);
+        if (type == 0) {
             setContentView(R.layout.activity_example);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                 Window window = getWindow();
                 window.setFlags(
                         WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-                        WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+                        WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+                );
             }
-        }
-        else {
+        } else {
             setContentView(R.layout.activity_example_light);
         }
         ButterKnife.bind(this);
@@ -60,11 +59,14 @@ public class ExampleActivity extends AppCompatActivity {
         mKChartView.setDateTimeFormatter(new DateFormatter());
         mKChartView.setGridRows(4);
         mKChartView.setGridColumns(4);
-        mKChartView.setOnSelectedChangedListener(new BaseKChartView.OnSelectedChangedListener(){
+        mKChartView.setOnSelectedChangedListener(new BaseKChartView.OnSelectedChangedListener() {
             @Override
             public void onSelectedChanged(BaseKChartView view, Object point, int index) {
                 KLineEntity data = (KLineEntity) point;
-                Log.i("onSelectedChanged", "index:" + index + " closePrice:" + data.getClosePrice());
+                Log.e(
+                        "onSelectedChanged",
+                        "index:" + index + " closePrice:" + data.getClosePrice()
+                );
             }
         });
     }

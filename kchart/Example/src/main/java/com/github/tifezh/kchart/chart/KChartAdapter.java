@@ -1,5 +1,7 @@
 package com.github.tifezh.kchart.chart;
 
+import android.util.Log;
+
 import com.github.tifezh.kchartlib.chart.BaseKChartAdapter;
 
 import java.util.ArrayList;
@@ -21,6 +23,7 @@ public class KChartAdapter extends BaseKChartAdapter {
 
     @Override
     public int getCount() {
+        Log.e("HHH ","size: " + datas.size());
         return datas.size();
     }
 
@@ -32,7 +35,7 @@ public class KChartAdapter extends BaseKChartAdapter {
     @Override
     public Date getDate(int position) {
         try {
-            String s = datas.get(position).Date;
+            String s = datas.get(position).date;
             String[] split = s.split("/");
             Date date = new Date();
             date.setYear(Integer.parseInt(split[0]) - 1900);

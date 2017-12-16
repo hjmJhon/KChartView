@@ -35,9 +35,9 @@ public interface CandleImpl {
      */
     public float getClosePrice();
 
-    public float getMA5Price();
+    public float getMa5Price();
 
-    public float getMA10Price();
+    public float getMa10Price();
 
-    public float getMA20Price();
+    public float getMa20Price();
 }
